@@ -1,9 +1,9 @@
-namespace ORM.Web.Migrations
+namespace ORM.DAL.Core.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DataMigration : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -31,6 +31,17 @@ namespace ORM.Web.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.Routes",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        StartingPoint = c.String(),
+                        EndPoin = c.String(),
+                        Transit = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -95,6 +106,7 @@ namespace ORM.Web.Migrations
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.Routes");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
         }

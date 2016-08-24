@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using ORM.DAL.Core;
+using ORM.DAL.Models;
 using ORM.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -53,7 +55,7 @@ namespace ORM.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginModel model, string returnUrl) {
+        public async Task<ActionResult> Login(ORM.Web.Models.LoginModel model, string returnUrl) {
             if (ModelState.IsValid) {
                 ApplicationUser user = await UserManager.FindAsync(model.Email, model.Password);
                 if (user == null) {

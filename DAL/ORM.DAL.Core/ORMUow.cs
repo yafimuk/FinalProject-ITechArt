@@ -2,8 +2,6 @@
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using ORM.DAL.Interfaces;
-using ORM.DAL.Interfaces.CustomRepositories;
-using ORM.DAL.Models.Entities;
 using StructureMap;
 
 namespace ORM.DAL.Core
@@ -23,22 +21,7 @@ namespace ORM.DAL.Core
 
 		#region MsSQL
 
-		public ICarDriversRepository CarDrivers
-		{
-			get
-			{
-				return GetRepository<ICarDriversRepository>();
-			}
-		}
-
-		public IRepository<Car> Cars
-		{
-			get
-			{
-				return GetRepository<IRepository<Car>>();
-			}
-		}
-
+	
 		#endregion MsSQL
 
 		#endregion

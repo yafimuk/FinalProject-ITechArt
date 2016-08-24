@@ -15,8 +15,7 @@ namespace ORM.IoC
 		{
 			container.Configure(config =>
 			{
-				config.AddRegistry<ORMDbContextRegistry>();
-				config.AddRegistry<RepositoryRegistry>();
+				config.AddRegistry<ApplicationContextRegistry>();
 				config.AddRegistry<ControllerRegistry>();
 				config.AddRegistry<BusinessLogicRegistry>();
 			});

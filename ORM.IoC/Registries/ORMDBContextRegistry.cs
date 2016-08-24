@@ -8,11 +8,11 @@ namespace ORM.IoC.Registries
 	/// <summary>
 	/// Instructs <c>StructureMap</c> how to create services and all related objects.
 	/// </summary>
-	public class ORMDbContextRegistry : Registry
+	public class ApplicationContextRegistry : Registry
 	{
-		public ORMDbContextRegistry()
+		public ApplicationContextRegistry()
 		{
-			For<DbContext>().HybridHttpOrThreadLocalScoped().Use<ORMDbContext>();
+			For<DbContext>().HybridHttpOrThreadLocalScoped().Use<ApplicationContext>();
 		}
 	}
 }

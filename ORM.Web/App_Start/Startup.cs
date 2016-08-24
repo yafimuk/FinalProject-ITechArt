@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using ORM.DAL.Core;
+using ORM.DAL.Models;
 using ORM.Web.Models;
 using Owin;
 using System;

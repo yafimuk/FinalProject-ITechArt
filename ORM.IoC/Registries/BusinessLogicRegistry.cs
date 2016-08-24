@@ -1,5 +1,4 @@
-﻿using ORM.BusinessLogic.Common;
-using ORM.BusinessLogic.Core;
+﻿using ORM.BusinessLogic.Core;
 using StructureMap.Configuration.DSL;
 
 namespace ORM.IoC.Registries
@@ -13,8 +12,6 @@ namespace ORM.IoC.Registries
 		{
 			Scan(x =>
 			{
-				x.AssemblyContainingType<ICarService>();
-				x.AssemblyContainingType<CarService>();
 				x.WithDefaultConventions();
 			});
 		}

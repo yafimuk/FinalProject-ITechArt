@@ -7,6 +7,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using ORM.DAL.Models;
+using ORM.DAL.Core;
 
 namespace ORM.Web.Controllers {
     public class RolesController : Controller {
@@ -74,5 +76,5 @@ namespace ORM.Web.Controllers {
             }
             return RedirectToAction("Index");
         }
-    } 
+    }
 }

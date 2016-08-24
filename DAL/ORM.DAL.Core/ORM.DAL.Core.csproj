@@ -96,13 +96,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201505260909340_InitializeDB.cs" />
-    <Compile Include="Migrations\201505260909340_InitializeDB.Designer.cs">
-      <DependentUpon>201505260909340_InitializeDB.cs</DependentUpon>
+    <Compile Include="ApplicationRoleManager.cs" />
+    <Compile Include="ApplicationUserManager.cs" />
+    <Compile Include="Migrations\201608241508461_Initial.cs" />
+    <Compile Include="Migrations\201608241508461_Initial.Designer.cs">
+      <DependentUpon>201608241508461_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ApplicationContext.cs" />
     <Compile Include="ORMDatabaseInitializer.cs" />
-    <Compile Include="ORMDbContext.cs" />
     <Compile Include="ORMUow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -143,8 +145,8 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505260909340_InitializeDB.resx">
-      <DependentUpon>201505260909340_InitializeDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608241508461_Initial.resx">
+      <DependentUpon>201608241508461_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

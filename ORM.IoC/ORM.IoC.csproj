@@ -105,7 +105,6 @@
     <Compile Include="Registries\BusinessLogicRegistry.cs" />
     <Compile Include="Registries\ControllerRegistry.cs" />
     <Compile Include="Registries\ORMDBContextRegistry.cs" />
-    <Compile Include="Registries\RepositoryRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -88,18 +88,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Books\Author.cs" />
-    <Compile Include="Entities\Books\Book.cs" />
-    <Compile Include="Entities\Books\Publisher.cs" />
-    <Compile Include="Entities\Books\Tag.cs" />
-    <Compile Include="Entities\Cars\Car.cs" />
-    <Compile Include="Entities\Cars\PassengerCar.cs" />
-    <Compile Include="Entities\Cars\Truck.cs" />
-    <Compile Include="Enums\CarBrand.cs" />
-    <Compile Include="Enums\CarColor.cs" />
-    <Compile Include="Enums\Language.cs" />
+    <Compile Include="Entities\ApplicationContext.cs" />
+    <Compile Include="Entities\ApplicationRole.cs" />
+    <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Entities\LoginModel.cs" />
+    <Compile Include="Entities\Route.cs" />
     <Compile Include="IBaseEntity.cs" />
-    <Compile Include="Entities\Cars\CarDriver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +121,7 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
