@@ -1,0 +1,90 @@
+﻿a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+.main-page {
+    background-color: #21b5ed;
+    color: #fff;
+    text-align: center;
+    font-size: 17px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 50px;
+}
+
+.main-page:hover {
+    color: #fff;
+    background-color: #3a78e8;
+}
+
+.main {
+    margin-top: 100px;
+    padding: 50px;
+}
+
+.input {
+    font-size: 17px;
+    margin: 10px 0 10px 0;
+    border: none;
+    border-bottom: 1px solid #E8F4FA;
+    color: #fff;
+    padding: 6px 12px;
+    background-color: transparent;
+}
+
+.input:focus {
+    outline: none;
+}
+
+::-webkit-input-placeholder {color:#E8F4FA;}
+::-moz-placeholder          {color:#E8F4FA;}
+:-moz-placeholder           {color:#E8F4FA;}
+:-ms-input-placeholder      {color:#E8F4FA;}
+
+.remember-me-checkbox {
+    zoom: 1.2;
+}
+
+.remember-me-label {
+    font-size: 17px;
+    margin: 10px 0 10px 0;
+    color: #fff;
+    font-weight: 500;
+}
+
+.remember-me-label:hover {
+    cursor: pointer;
+}
+
+.log-in {
+    margin-top: 20px;
+    font-size: 17px;
+    padding: 10px 0 10px 0;
+    color: #fff;
+    background-color: #2CC0DE;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.log-in:hover {
+    background-color: #2396AD;
+    color: #fff;
+    cursor: pointer;
+}
+
+.log-in:focus {
+    color: #fff;
+}
+
+.text-danger {
+    color: #e40695;
+}

@@ -1,46 +1,48 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using ORM.DAL.Core;
-using ORM.DAL.Models;
-using ORM.Web.Models;
+﻿using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using ORM.BusinessLogic.Common;
+using ORM.DAL.Models.Entities;
+using ORM.Web.Models;
+using Microsoft.AspNet.Identity;
+using System.Net.Mail;
+using ORM.DAL.Models;
+using Microsoft.Owin.Security;
+using System.Security.Claims;
+using ORM.DAL.Core;
 
-namespace ORM.Web.Controllers
-{
-        public class AccountController : Controller {
-            private ApplicationUserManager UserManager {
-                get {
-                    return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+namespace ORM.Web.Controllers {
+    public class AccountController : Controller {
+        private ApplicationUserManager UserManager {
+            get {
+                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+        }
+
+        public ActionResult Register() {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Register(RegisterModel model) {
+            if (ModelState.IsValid) {
+                ApplicationUser user = new ApplicationUser { FirstName = model.FirstName, Email = model.Email};
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded) {
+                    return RedirectToAction("Login", "Account");
+                }
+                else {
+                    foreach (string error in result.Errors) {
+                        ModelState.AddModelError("", error);
+                    }
                 }
             }
-
-            public ActionResult Register() {
-                return View();
-            }
-
-            [HttpPost]
-            public async Task<ActionResult> Register(RegisterModel model) {
-                if (ModelState.IsValid) {
-                    ApplicationUser user = new ApplicationUser { UserName = model.Email, Email = model.Email, Year = model.Year };
-                    IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-                    if (result.Succeeded) {
-                        return RedirectToAction("Login", "Account");
-                    }
-                    else {
-                        foreach (string error in result.Errors) {
-                            ModelState.AddModelError("", error);
-                        }
-                    }
-                }
-                return View(model);
-            }
+            return View(model);
+        }
 
         private IAuthenticationManager AuthenticationManager {
             get {
@@ -83,4 +85,4 @@ namespace ORM.Web.Controllers
 
 
     }
-    }
+}

@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNet.Identity
+@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Custom/_layout.css" />
+    @RenderSection("Styles")
+    <script src="~/scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+</head>
+<body>
+    <div class="container">
+        <div class="col-lg-12">
+            <h1 class="col-lg-3 title">
+                <a href="/">Ticket Shop</a>
+            </h1>
+            <nav class="col-lg-6 col-lg-offset-3 nav">
+                @if (User.IsInRole("Admin")) {
+                    <a class="nav-item" href="/Home/AddTicket">Add ticket</a>
+                }
+                @if (User.Identity.IsAuthenticated) {
+                    <a class="nav-item" href="/ShoppingCart/Index">Shopping cart</a>
+                }
+                @if (User.Identity.IsAuthenticated) {
+                    <a class="nav-item" href="/Account/UserProfile">@User.Identity.GetUserName()</a>
+                }
+                else {
+                    <a class="nav-item" href="/Account/Registration">Registration</a>
+                }
+                @if (User.Identity.IsAuthenticated) {
+                    <a class="nav-item" href="/Account/Logout">Log out</a>
+                }
+                else {
+                    <a class="nav-item" href="/Account/Login">Log in</a>
+                }
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    @RenderSection("Scripts")
+</body>
+</html>

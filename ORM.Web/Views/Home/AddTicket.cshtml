@@ -1,0 +1,36 @@
+﻿@using ORM.Web.Models
+@model AddTicketModel
+@{
+    ViewBag.Title = "Add Ticket";
+    Layout = "~/Views/_Layouts/_Layout.cshtml";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/Content/Custom/Home/addTicket.css" />
+}
+
+<div class="col-lg-12 main">
+    <form class="col-lg-offset-3 col-lg-6" action="/Home/AddTicket" method="post">
+        @Html.AntiForgeryToken()
+        <div class="row">
+            @Html.TextBoxFor(m => m.DateTime, new { @class = "col-lg-12 input", @type = "datetime-local" })
+            @Html.ValidationMessageFor(m => m.DateTime)
+        </div>
+       
+        <div class="row">
+            @Html.TextBoxFor(m => m.Cost, new { @class = "col-lg-12 input", @placeholder = "Cost" })
+            @Html.ValidationMessageFor(m => m.Cost)
+        </div>
+        <div class="row">
+            @Html.TextAreaFor(m => m.Description, new { @class = "col-lg-12 input", @placeholder = "Description" })
+            @Html.ValidationMessageFor(m => m.Description)
+        </div>
+        <div class="row">
+            <input class="col-lg-5 log-in" type="submit" value="Add">
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+}

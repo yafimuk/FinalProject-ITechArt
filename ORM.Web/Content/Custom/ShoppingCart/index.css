@@ -1,0 +1,94 @@
+﻿a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+.wrapper {
+    padding-left: 35px;
+}
+
+.item-title {
+    font-size: 19px;
+}
+
+.content {
+    padding: 0px 40px;
+}
+
+.count {
+    padding: 0px 40px;
+}
+
+.count-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.count-input:focus {
+    outline: none;
+}
+
+.wrapper-add-to-cart {
+    padding-left: 15px;
+    margin-top: 20px;
+}
+
+.add-to-cart {
+    color: #fff;
+    background-color: #2CC0DE;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.add-to-cart:hover {
+    background-color: #2396AD;
+    color: #fff;
+    cursor: pointer;
+}
+
+.add-to-cart:focus {
+    color: #fff;
+}
+
+.add-to-cart:disabled {
+    opacity: 0.4;
+}
+
+.add-to-cart:hover:disabled {
+    background-color: #2CC0DE;
+    cursor: default;
+}
+
+.wrapper-page-size {
+    margin: 30px 0;
+    font-size: 17px;
+}
+
+.page-size {
+    color: #fff;
+    background-color: #2CC0DE;
+    text-align: center;
+    padding: 5px 8px;
+    margin-left: 5px;
+    border-radius: 4px;
+}
+
+.page-size:hover {
+    background-color: #2396AD;
+    color: #fff;
+    cursor: pointer;
+}
+
+.page-size:focus {
+    color: #fff;
+}

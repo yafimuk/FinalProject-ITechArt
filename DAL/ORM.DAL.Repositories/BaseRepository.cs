@@ -5,81 +5,67 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using ORM.DAL.Interfaces;
 
-namespace ORM.DAL.Repositories
-{
-	public class BaseRepository<T> : IRepository<T> where T : class
-	{
-		protected DbContext DbContext { get; set; }
+namespace ORM.DAL.Repositories {
 
-		protected DbSet<T> DbSet { get; set; }
+	public class BaseRepository<T> : IRepository<T> where T : class {
+        protected DbContext DbContext { get; set; }
 
-		public BaseRepository(DbContext dbContext)
-		{
-			if (dbContext == null)
-			{
-				throw new ArgumentNullException("dbContext");
-			}
-			DbContext = dbContext;
-			DbSet = DbContext.Set<T>();
-		}
+        protected DbSet<T> DbSet { get; set; }
 
-		public virtual IQueryable<T> GetAll()
-		{
-			return DbSet;
-		}
+        public BaseRepository(DbContext dbContext) {
+            if (dbContext == null) {
+                throw new ArgumentNullException("dbContext");
+            }
+            DbContext = dbContext;
+            DbSet = DbContext.Set<T>();
+        }
 
-		public virtual T GetById(long id)
-		{
-			return DbSet.Find(id);
-		}
+        public virtual IQueryable<T> GetAll() {
+            return DbSet;
+        }
 
-		public virtual void Create(T entity)
-		{
-			DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
-			dbEntityEntry.State = EntityState.Added;
-		}
+        public virtual T GetById(long id) {
+            return DbSet.Find(id);
+        }
 
-		public virtual void Update(T entity)
-		{
-			DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
-			dbEntityEntry.State = EntityState.Modified;
-		}
+        public virtual void Create(T entity) {
+            DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
+            dbEntityEntry.State = EntityState.Added;
+        }
 
-		public virtual bool Delete(long id)
-		{
-			T entity = GetById(id);
-			if (entity != null)
-			{
-				Delete(entity);
-				return true;
-			}
-			return false;
-		}
+        public virtual void Update(T entity) {
+            DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
+            dbEntityEntry.State = EntityState.Modified;
+        }
 
-		public void Delete(T entity)
-		{
-			DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
-			dbEntityEntry.State = EntityState.Deleted;
-		}
+        public virtual bool Delete(long id) {
+            T entity = GetById(id);
+            if (entity != null) {
+                Delete(entity);
+                return true;
+            }
+            return false;
+        }
 
-		protected void RollBackChangesInContext()
-		{
-			List<DbEntityEntry> changedEntries = DbContext.ChangeTracker.Entries().Where(x => x.State != EntityState.Unchanged).ToList();
-			foreach (DbEntityEntry entry in changedEntries.Where(x => x.State == EntityState.Modified))
-			{
-				entry.CurrentValues.SetValues(entry.OriginalValues);
-				entry.State = EntityState.Unchanged;
-			}
+        public void Delete(T entity) {
+            DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
+            dbEntityEntry.State = EntityState.Deleted;
+        }
 
-			foreach (DbEntityEntry entry in changedEntries.Where(x => x.State == EntityState.Added))
-			{
-				entry.State = EntityState.Detached;
-			}
+        protected void RollBackChangesInContext() {
+            List<DbEntityEntry> changedEntries = DbContext.ChangeTracker.Entries().Where(x => x.State != EntityState.Unchanged).ToList();
+            foreach (DbEntityEntry entry in changedEntries.Where(x => x.State == EntityState.Modified)) {
+                entry.CurrentValues.SetValues(entry.OriginalValues);
+                entry.State = EntityState.Unchanged;
+            }
 
-			foreach (DbEntityEntry entry in changedEntries.Where(x => x.State == EntityState.Deleted))
-			{
-				entry.State = EntityState.Unchanged;
-			}
-		}
-	}
+            foreach (DbEntityEntry entry in changedEntries.Where(x => x.State == EntityState.Added)) {
+                entry.State = EntityState.Detached;
+            }
+
+            foreach (DbEntityEntry entry in changedEntries.Where(x => x.State == EntityState.Deleted)) {
+                entry.State = EntityState.Unchanged;
+            }
+        }
+    }
 }
