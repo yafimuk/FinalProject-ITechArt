@@ -1,0 +1,31 @@
+﻿@using ORM.Web.Models
+@model LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/_Layouts/_Layout.cshtml";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/Content/Custom/Account/login.css" />
+}
+<div class="col-lg-12 main">
+    <form class="col-lg-offset-3 col-lg-6" action="/Account/Login?ReturnUrl=@Request.QueryString["ReturnUrl"]" method="post">
+        @Html.AntiForgeryToken()
+        <div class="row">
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+        </div>
+        <div class="row">
+            @Html.TextBoxFor(m => m.Email, new { @class = "col-lg-12 input", @placeholder = "Email", @type = "email" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+       
+        
+        <div class="row">
+            <input class="col-lg-5 log-in" type="submit" value="Log in">
+            <a class="col-lg-offset-2 col-lg-5 log-in" href="/Account/Registration">Registration</a>
+        </div>
+    </form>
+</div>
+@section Scripts
+{
+}
